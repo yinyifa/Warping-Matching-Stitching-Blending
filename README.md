@@ -2,7 +2,7 @@
 ## Part1
 ### How it works:
 It follows the basic idea of k-means clustering by grouping pictures that are closer to each other(shares more distinct feature points).
-#####Test code:
+##### Test code:
 ```python
 python part1.py 2 bigben_6.jpg bigben_8.jpg eiffel_18.jpg eiffel_19.jpg part1_output.txt
 ```
