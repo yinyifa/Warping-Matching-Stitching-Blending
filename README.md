@@ -1,5 +1,5 @@
-# A2 : Warping, Matching, Stitching, Blending
-## Part1
+# **A2 : Warping, Matching, Stitching, Blending**
+# **Part1**
 ### How it works:
 It follows the basic idea of k-means clustering by grouping pictures that are closer to each other(shares more distinct feature points).
 ##### Test code:
@@ -17,7 +17,7 @@ To shorten the time of the whole process, I decided to compute a distance matrix
 ### Design decisions:
 Tried to use K-Means as the method but ran into problem creating new centroids that minimize the distance from other in-group feature vectors. So, I turned to K-Medoids which uses existing points in data as the new centroids. Which is not so time efficient but also not too bad, and it overcomes the difficulty facing by using K-Means.
 
-## Part2
+# **Part2**
 ### How it works:
 Taking in two images and transform one of them base on the spatial layout of the other image.
 This is accomplished using pairs of corresponding points to compute the transformation matrix which can transpose the original
@@ -38,7 +38,7 @@ To better blend in with the overall workflow, we decide to pre-process the pictu
 sides of the original images, which leaves enough space for image stitching and keeps all original information. 
 
 
-## Part3
+# **Part3**
 ### How it works:
 This part would be a step more than part 2 and absorbs the function from part 1.
 It takes two images and auto-detect and transform one of the image to be in the 
