@@ -17,6 +17,13 @@ if __name__ == '__main__':
         output_filename = arguments[-1]
         part1.k_cluster(picture_list, int(k), output_filename)
     elif which_part == "part2":
-        pass
+        n = arguments[2]
+        picture_1, picture_2 = arguments[3:5]
+        output_filename = arguments[5]
+        coordinates = arguments[6:]
+        # Todo: Change here
+        part2.WHATEVER_FUNCTION(int(n), picture_1, picture_2, output_filename, coordinates)
     elif which_part == "part3":
-        pass
+        picture_1, picture_2, output_filename = arguments[2:]
+        # Todo: Change here
+        part3.WHATEVER_FUNCTION(picture_1, picture_2, output_filename)
