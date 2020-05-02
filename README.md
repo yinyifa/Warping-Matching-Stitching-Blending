@@ -1,10 +1,4 @@
 # **A2 : Warping, Matching, Stitching, Blending**
-## **Results**
-<img src="colosseum_4.jpg" width="30%"> <img src="colosseum_5.jpg" width="30%"> <img src="success_example/colosseum.jpg" width="30%"> 
-
-<img src="eiffel_18.jpg" width="30%"><img src="eiffel_19.jpg" width="30%"> <img src="success_example/resulteiffel.jpg" width="30%">
-
-<img src="book1.jpg" width="20%"><img src="book2.jpg" width="20%"><img src="success_example/resultbook.jpg" width="20%"> <img src="success_example/resultbook2.jpg" width="20%">
 
 # **Part1**
 ## **Results**
@@ -62,6 +56,13 @@ sides of the original images, which leaves enough space for image stitching and 
 
 
 # **Part3**
+## **Results**
+<img src="colosseum_4.jpg" width="30%"> <img src="colosseum_5.jpg" width="30%"> <img src="success_example/colosseum.jpg" width="30%"> 
+
+<img src="eiffel_18.jpg" width="30%"><img src="eiffel_19.jpg" width="30%"> <img src="success_example/resulteiffel.jpg" width="30%">
+
+<img src="book1.jpg" width="20%"><img src="book2.jpg" width="20%"><img src="success_example/resultbook.jpg" width="20%"> <img src="success_example/resultbook2.jpg" width="20%">
+
 ### How it works:
 This part would be a step more than part 2 and absorbs the function from part 1.
 It takes two images and auto-detect and transform one of the image to be in the 
