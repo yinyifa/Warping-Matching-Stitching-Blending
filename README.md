@@ -2,6 +2,7 @@
 ## **Results**
 ![Demo](success_example/colosseum.jpg)![Demo](success_example/resultbook.jpg)
 ![Demo](success_example/resultbook2.jpg)![Demo](success_example/resulteiffel.jpg)
+<img src="success_example/resultbook.jpg" width="40%">
 # **Part1**
 ### How it works:
 It follows the basic idea of k-means clustering by grouping pictures that are closer to each other(shares more distinct feature points).
