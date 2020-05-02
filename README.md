@@ -37,7 +37,7 @@ image using inverse warping and bilinear interpolation.
 
 ##### Test code:
 ```python
-python a2.py part2 4 book1.jpg book2.jpg book_output.jpg 318, 256 141, 131 534, 372 480, 159 316, 670 493, 630 73, 473 64, 601
+python a2.py part2 4 book1.jpg book2.jpg book_output.jpg 318,256 141,131 534,372 480,159 316,670 493,630 73,473 64,601
 ```
 
 ### Assumptions:
