@@ -1,9 +1,19 @@
 # **A2 : Warping, Matching, Stitching, Blending**
 ## **Results**
-<img src="success_example/colosseum.jpg" width="40%"> <img src="success_example/resulteiffel.jpg" width="40%">
-<img src="success_example/resultbook.jpg" width="40%"> <img src="success_example/resultbook2.jpg" width="40%">
+<img src="colosseum_4.jpg" width="30%"> <img src="colosseum_5.jpg" width="30%"> <img src="success_example/colosseum.jpg" width="30%"> 
+
+<img src="eiffel_18.jpg" width="30%"><img src="eiffel_19.jpg" width="30%"> <img src="success_example/resulteiffel.jpg" width="30%">
+
+<img src="book1.jpg" width="20%"><img src="book2.jpg" width="20%"><img src="success_example/resultbook.jpg" width="20%"> <img src="success_example/resultbook2.jpg" width="20%">
 
 # **Part1**
+## **Results**
+eiffel_18.jpg eiffel_19.jpg 
+bigben_6.jpg bigben_8.jpg 
+
+part1-images/eiffel_19.jpg part1-images/eiffel_1.jpg part1-images/eiffel_3.jpg 
+part1-images/bigben_2.jpg part1-images/bigben_3.jpg part1-images/bigben_8.jpg part1-images/bigben_6.jpg part1-images/bigben_10.jpg part1-images/eiffel_18.jpg part1-images/eiffel_6.jpg 
+
 ### How it works:
 It follows the basic idea of k-means clustering by grouping pictures that are closer to each other(shares more distinct feature points).
 ##### Test code:
