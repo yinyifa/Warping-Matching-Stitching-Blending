@@ -2,6 +2,7 @@
 ## **Results**
 <img src="success_example/colosseum.jpg" width="40%"> <img src="success_example/resulteiffel.jpg" width="40%">
 <img src="success_example/resultbook.jpg" width="40%"> <img src="success_example/resultbook2.jpg" width="40%">
+
 # **Part1**
 ### How it works:
 It follows the basic idea of k-means clustering by grouping pictures that are closer to each other(shares more distinct feature points).
@@ -24,10 +25,16 @@ Tried to use K-Means as the method but ran into problem creating new centroids t
 ## **Results**
 <img src="book1.jpg" width="30%"> <img src="book2.jpg" width="30%">
 <img src="book_output.jpg" width="30%">
+
 ### How it works:
 Taking in two images and transform one of them base on the spatial layout of the other image.
 This is accomplished using pairs of corresponding points to compute the transformation matrix which can transpose the original
 image using inverse warping and bilinear interpolation.
+
+##### Test code:
+```python
+python a2.py part2 4 book1.jpg book2.jpg book_output.jpg 318, 256 141, 131 534, 372 480, 159 316, 670 493, 630 73, 473 64, 601
+```
 
 ### Assumptions:
 The pair-wise coordinates should come from the detection of similar set of features in two images,
@@ -51,6 +58,11 @@ It takes two images and auto-detect and transform one of the image to be in the
 same coordinate system of the other, and then stitch them together as well as keeping
 all the original information. This method uses RANSAC to get feature points that 
 can be used to calculate the transformation matrix between two images.
+
+##### Test code:
+```python
+python a2.py part3 eiffel_18.jpg eiffel_19.jpg part3_demo.jpg
+```
 
 ### Assumptions:
 The RANSAC algorithm would work well and retract enough coordinates for corresponding

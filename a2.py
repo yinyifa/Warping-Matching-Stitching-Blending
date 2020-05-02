@@ -58,7 +58,7 @@ if __name__ == '__main__':
         picture_1, picture_2, output_filename = arguments[2:]
         part3.main(picture_1, picture_2, output_filename)
     elif which_part == "part2":
-        # python a2.py part2 4 book1.jpg book2.jpg book_output.jpg 318,256 141,131 534,372 480,159 316,670 493,630 73,473 64,601
+        # python a2.py part2 4 book1.jpg book2.jpg book_output.jpg 318, 256 141, 131 534, 372 480, 159 316, 670 493, 630 73, 473 64, 601
         part = sys.argv[1]
         n = int(sys.argv[2])
         img1_path = sys.argv[3]
