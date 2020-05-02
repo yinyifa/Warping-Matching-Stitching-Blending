@@ -78,7 +78,6 @@ if __name__ == '__main__':
 	# end input
 
 
-	n = 1
 	
 	if n == 1:
 		tx = img1_x1 - img2_x1
