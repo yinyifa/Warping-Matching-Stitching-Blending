@@ -153,7 +153,7 @@ def k_cluster(picture_list, k, output_filename):
             temp = []
             for every in each:
                 temp.append(picture_list[every][len("part1-images/"):len("part1-images/") + 6])
-        #     print(temp)
+            print(temp)
         #     print("")
         # print("")
         # print("")
@@ -168,7 +168,7 @@ def k_cluster(picture_list, k, output_filename):
             temp_output += picture_list[every] + " "
             temp.append(picture_list[every])
         output.append(temp_output)
-        # print(temp)
+        print(temp)
         # print("")
     # print(output)
     with open(output_filename, "w") as output_file:
@@ -186,13 +186,13 @@ def k_cluster(picture_list, k, output_filename):
 if __name__ == '__main__':
     # test = np.array([[[1,2,3]],[[3,2,3]],[[4,2,3]],[[2,2,3]]])
     # print([x for _, x in sorted(zip([y[0,0] for y in test], test))])
-    arguments = sys.argv
-    # which_part = arguments[1]
-    k = arguments[1]
-    picture_list = arguments[2:-1]
-    output_filename = arguments[-1]
-    # print(picture_list, k, output_filename)
-    k_cluster(picture_list, int(k), output_filename)
+    # arguments = sys.argv
+    # # which_part = arguments[1]
+    # k = arguments[1]
+    # picture_list = arguments[2:-1]
+    # output_filename = arguments[-1]
+    # # print(picture_list, k, output_filename)
+    # k_cluster(picture_list, int(k), output_filename)
     # python part1.py 2 bigben_6.jpg bigben_8.jpg eiffel_18.jpg eiffel_19.jpg part1_output.txt
 
 
@@ -203,22 +203,22 @@ if __name__ == '__main__':
     # print(temp_init_centers)
     # print(np.unravel_index(np.argmin(np_test, axis=None), np_test.shape))
 
-    # pic1 = "part1-images/bigben_2.jpg"
-    # pic2 = "part1-images/bigben_3.jpg"
-    # pic3 = "part1-images/bigben_12.jpg"
-    # pic4 = "part1-images/bigben_6.jpg"
-    # pic5 = "part1-images/bigben_13.jpg"
-    #
-    # pic10 = "part1-images/eiffel_18.jpg"
-    # pic11 = "part1-images/eiffel_22.jpg"
-    # pic12 = "part1-images/eiffel_5.jpg"
-    # pic13 = "part1-images/eiffel_6.jpg"
-    # pic14 = "part1-images/eiffel_15.jpg"
-    #
-    # start_time = time.time()
-    # k_cluster([pic1, pic2, pic3, pic4, pic5, pic10, pic11, pic12, pic13, pic14], 2, "part1_output.txt")
-    # end_time = time.time()
-    # print("Time taken :", round((end_time - start_time)//60), ":", round((end_time - start_time) % 60))
+    pic1 = "part1-images/bigben_2.jpg"
+    pic2 = "part1-images/bigben_3.jpg"
+    pic3 = "part1-images/bigben_8.jpg"
+    pic4 = "part1-images/bigben_6.jpg"
+    pic5 = "part1-images/bigben_10.jpg"
+
+    pic10 = "part1-images/eiffel_18.jpg"
+    pic11 = "part1-images/eiffel_19.jpg"
+    pic12 = "part1-images/eiffel_1.jpg"
+    pic13 = "part1-images/eiffel_3.jpg"
+    pic14 = "part1-images/eiffel_6.jpg"
+
+    start_time = time.time()
+    k_cluster([pic1, pic2, pic3, pic4, pic5, pic10, pic11, pic12, pic13, pic14], 2, "part1_output.txt")
+    end_time = time.time()
+    print("Time taken :", round((end_time - start_time)//60), ":", round((end_time - start_time) % 60))
 
     # pic1 = "part1-images/bigben_2.jpg"
     # pic2 = "part1-images/bigben_3.jpg"
