@@ -21,6 +21,9 @@ To shorten the time of the whole process, I decided to compute a distance matrix
 Tried to use K-Means as the method but ran into problem creating new centroids that minimize the distance from other in-group feature vectors. So, I turned to K-Medoids which uses existing points in data as the new centroids. Which is not so time efficient but also not too bad, and it overcomes the difficulty facing by using K-Means.
 
 # **Part2**
+## **Results**
+<img src="book1.jpg" width="30%"> <img src="book2.jpg" width="30%">
+<img src="book_output.jpg" width="30%">
 ### How it works:
 Taking in two images and transform one of them base on the spatial layout of the other image.
 This is accomplished using pairs of corresponding points to compute the transformation matrix which can transpose the original
