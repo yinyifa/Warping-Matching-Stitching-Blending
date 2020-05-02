@@ -3,9 +3,13 @@
 # **Part1**
 ## **Results**
 eiffel_18.jpg eiffel_19.jpg 
+
 bigben_6.jpg bigben_8.jpg 
 
+
+
 part1-images/eiffel_19.jpg part1-images/eiffel_1.jpg part1-images/eiffel_3.jpg 
+
 part1-images/bigben_2.jpg part1-images/bigben_3.jpg part1-images/bigben_8.jpg part1-images/bigben_6.jpg part1-images/bigben_10.jpg part1-images/eiffel_18.jpg part1-images/eiffel_6.jpg 
 
 ### How it works:
