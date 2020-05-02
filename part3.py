@@ -19,13 +19,6 @@ def readImage(filename):
         print('Image successfully read...')
         return img
 
-#
-# def findFeatures(img):
-#     print("Finding Features...")
-#     orb = cv2.ORB_create()
-#     keypoints, descriptors = orb.detectAndCompute(img, None)
-#     return keypoints, descriptors
-
 
 def Homography(cl):
     # loop through correspondences and create assemble matrix
@@ -64,21 +57,29 @@ def Distance(c, h):
     return np.linalg.norm(error)
 
 
-# def matchFeatures(desc1, desc2):
-#     print("Matching Features...")
-#     matcher = cv2.BFMatcher(cv2.NORM_L2, True)
-#     matches = matcher.match(desc1, desc2)
-#     print("Features Matched...")
-#     return matches
-
-
-def ransac(cl, thresh):
+def ransac(img1, img2, thresh):
     maxInliers = []
     finalH = None
     j = 0
-    # for i in range(10000):
-    while len(maxInliers) <= 30:
+    # increase the number below to improve the accuracy, but will cost more time
+    while len(maxInliers) <= 40:
         j += 1
+        print("Finding Features...")
+        cl = []
+        orb = cv2.ORB_create()
+        kp1, desc1 = orb.detectAndCompute(img1, None)
+        kp2, desc2 = orb.detectAndCompute(img2, None)
+        keypoints = [kp1, kp2]
+        print("Matching Features...")
+        matcher = cv2.BFMatcher(cv2.NORM_L2, True)
+        matches = matcher.match(desc1, desc2)
+        print("Features Matched...")
+        for match in matches:
+            (x1, y1) = keypoints[0][match.queryIdx].pt
+            (x2, y2) = keypoints[1][match.trainIdx].pt
+            cl.append([x1, y1, x2, y2])
+
+        cl = np.mat(cl)
         print(str(j)+"th iteration")
         for i in range(1000):
             print("ransac inner loop time:", i, ";", "best number of inliers:", len(maxInliers))
@@ -161,27 +162,24 @@ def main():
 
     cl = []
     if img1 is not None and img2 is not None:
-        print("Finding Features...")
-        orb = cv2.ORB_create()
-        kp1, desc1 = orb.detectAndCompute(img1, None)
-        kp2, desc2 = orb.detectAndCompute(img2, None)
-        # kp1, desc1 = findFeatures(img1)
-        # kp2, desc2 = findFeatures(img2)
-        keypoints = [kp1, kp2]
-        print("Matching Features...")
-        matcher = cv2.BFMatcher(cv2.NORM_L2, True)
-        matches = matcher.match(desc1, desc2)
-        print("Features Matched...")
-        # matches = matchFeatures(desc1, desc2)
-        for match in matches:
-            (x1, y1) = keypoints[0][match.queryIdx].pt
-            (x2, y2) = keypoints[1][match.trainIdx].pt
-            cl.append([x1, y1, x2, y2])
-
-        corrs = np.mat(cl)
+        # print("Finding Features...")
+        # orb = cv2.ORB_create()
+        # kp1, desc1 = orb.detectAndCompute(img1, None)
+        # kp2, desc2 = orb.detectAndCompute(img2, None)
+        # keypoints = [kp1, kp2]
+        # print("Matching Features...")
+        # matcher = cv2.BFMatcher(cv2.NORM_L2, True)
+        # matches = matcher.match(desc1, desc2)
+        # print("Features Matched...")
+        # for match in matches:
+        #     (x1, y1) = keypoints[0][match.queryIdx].pt
+        #     (x2, y2) = keypoints[1][match.trainIdx].pt
+        #     cl.append([x1, y1, x2, y2])
+        #
+        # corrs = np.mat(cl)
 
         # run ransac algorithm
-        finalH, inliers = ransac(corrs, estimation_thresh)
+        finalH, inliers = ransac(img1, img2, estimation_thresh)
         print("Final inliers count: ", len(inliers))
 
         ## (y,x,1)-> (shape[1],shape[0],1)
@@ -217,7 +215,9 @@ def main():
                 yoffset += int(max(yl) - img1.shape[1])
         offset = max(xoffset, yoffset)
         offset2 = max(img1.shape[0], img1.shape[1])
+        print("warping image...")
         warp(finalH, img2name, img_output_path, offset, offset2, newXOffset, newYOffset)
+        print("merging image...")
         two = cv2.imread(img_output_path)
         one = cv2.imread(img1name)
         img_new1 = np.zeros((img1.shape[0] + offset + offset2, img1.shape[1] + offset + offset2, 3))
