@@ -5,10 +5,9 @@ import sys
 import numpy as np
 
 def warp(trans_matrix, img2_path, img_output_path):
+	img = cv2.imread(img2_path)
 
-	img = cv2.imread(img2_path, cv2.IMREAD_GRAYSCALE)
-
-	warped_img = np.zeros(img.shape)
+	warped_img = np.zeros((img.shape[0], img.shape[1], 3))
 
 	#trans_matrix = np.array([[0.907, 0.258, -182], [-0.153, 1.44, 58], [-0.000306, 0.000731, 1]])
 	inverse_matrix = np.linalg.inv(trans_matrix)
@@ -23,10 +22,10 @@ def warp(trans_matrix, img2_path, img_output_path):
 			a = int(old_coordinate_x)+1-old_coordinate_x
 			b = int(old_coordinate_y)+1-old_coordinate_y
 			if (old_coordinate_y) >= warped_img.shape[1] - 1 or (old_coordinate_y) < 0:
-				warped_img[x][y] = 0
+				warped_img[x][y] = [0, 0, 0]
 				continue
 			if (old_coordinate_x) >= warped_img.shape[0] - 1 or (old_coordinate_x) < 0:
-				warped_img[x][y] = 0
+				warped_img[x][y] = [0, 0, 0]
 				continue
 
 			left_top = img[int(old_coordinate_x)][int(old_coordinate_y)]
@@ -133,28 +132,5 @@ if __name__ == '__main__':
 		Z = np.append(Z, [1], axis=0)
 
 		trans_matrix = Z.reshape((3,3))
-
+	print("warping image...")
 	warp(trans_matrix, img2_path, img_output_path)
-
-		
-
-
-
-
-
-		
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
