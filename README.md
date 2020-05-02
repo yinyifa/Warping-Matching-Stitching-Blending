@@ -1,9 +1,7 @@
 # **A2 : Warping, Matching, Stitching, Blending**
 ## **Results**
-![Demo](success_example/colosseum.jpg width="200" height="400")
-![Demo](success_example/resultbook.jpg =250x250)
-![Demo](success_example/resultbook2.jpg =250x250)
-![Demo](success_example/resulteiffel.jpg =250x250)
+![Demo](success_example/colosseum.jpg)![Demo](success_example/resultbook.jpg)
+![Demo](success_example/resultbook2.jpg)![Demo](success_example/resulteiffel.jpg)
 # **Part1**
 ### How it works:
 It follows the basic idea of k-means clustering by grouping pictures that are closer to each other(shares more distinct feature points).
