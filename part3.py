@@ -19,13 +19,6 @@ def readImage(filename):
         print('Image successfully read...')
         return img
 
-#
-# def findFeatures(img):
-#     print("Finding Features...")
-#     orb = cv2.ORB_create()
-#     keypoints, descriptors = orb.detectAndCompute(img, None)
-#     return keypoints, descriptors
-
 
 def Homography(cl):
     # loop through correspondences and create assemble matrix
@@ -64,19 +57,11 @@ def Distance(c, h):
     return np.linalg.norm(error)
 
 
-# def matchFeatures(desc1, desc2):
-#     print("Matching Features...")
-#     matcher = cv2.BFMatcher(cv2.NORM_L2, True)
-#     matches = matcher.match(desc1, desc2)
-#     print("Features Matched...")
-#     return matches
-
-
 def ransac(cl, thresh):
     maxInliers = []
     finalH = None
     j = 0
-    # for i in range(10000):
+    # increase the number below to improve the accuracy, but will cost more time
     while len(maxInliers) <= 30:
         j += 1
         print(str(j)+"th iteration")
@@ -97,6 +82,7 @@ def ransac(cl, thresh):
 
             for i in range(len(cl)):
                 d = Distance(cl[i], h)
+                # this is for accuracy, less value means more accurate(cost more time)
                 if d < 5:
                     inliers.append(cl[i])
 
@@ -117,10 +103,8 @@ def warp(finalH, img2_path, img_output_path, offset, offset2, newXOffset, newYOf
         for y in range(warped_img.shape[1]):
             if y < warped_img.shape[0] and x < warped_img.shape[1]:
                 warped_coordinate = np.array([y, x, 1])
-                # old_coordinate = inverse_matrix @ warped_coordinate
                 old_coordinate1 = translation @ warped_coordinate
                 old_coordinate = inverse_matrix @ old_coordinate1
-                # old_coordinate = inverse_H @ old_coordinate2
                 old_coordinate_w = old_coordinate[2]
                 old_coordinate_x = old_coordinate[1] / old_coordinate_w
                 old_coordinate_y = old_coordinate[0] / old_coordinate_w
@@ -151,13 +135,6 @@ def main(p1, p2, of):
     if estimation_thresh is None:
         estimation_thresh = 0.80
 
-    # img1name = str(img_name[0])
-    # img2name = str(img_name[1])
-    # img_output_path = str(img_name[2])
-    # print("Image 1 Name: " + img1name)
-    # print("Image 2 Name: " + img2name)
-    # img1 = readImage(img_name[0])
-    # img2 = readImage(img_name[1])
     img1name = p1
     img2name = p2
     img_output_path = of
@@ -172,14 +149,11 @@ def main(p1, p2, of):
         orb = cv2.ORB_create()
         kp1, desc1 = orb.detectAndCompute(img1, None)
         kp2, desc2 = orb.detectAndCompute(img2, None)
-        # kp1, desc1 = findFeatures(img1)
-        # kp2, desc2 = findFeatures(img2)
         keypoints = [kp1, kp2]
         print("Matching Features...")
         matcher = cv2.BFMatcher(cv2.NORM_L2, True)
         matches = matcher.match(desc1, desc2)
         print("Features Matched...")
-        # matches = matchFeatures(desc1, desc2)
         for match in matches:
             (x1, y1) = keypoints[0][match.queryIdx].pt
             (x2, y2) = keypoints[1][match.trainIdx].pt
@@ -224,7 +198,9 @@ def main(p1, p2, of):
                 yoffset += int(max(yl) - img1.shape[1])
         offset = max(xoffset, yoffset)
         offset2 = max(img1.shape[0], img1.shape[1])
+        print("warping image...")
         warp(finalH, img2name, img_output_path, offset, offset2, newXOffset, newYOffset)
+        print("merging image...")
         two = cv2.imread(img_output_path)
         one = cv2.imread(img1name)
         img_new1 = np.zeros((img1.shape[0] + offset + offset2, img1.shape[1] + offset + offset2, 3))
@@ -240,5 +216,4 @@ def main(p1, p2, of):
 if __name__ == "__main__":
     arguments = sys.argv
     p1, p2, of = arguments[1:]
-    # p1, p2, of = ["eiffel_18.jpg", "eiffel_19.jpg", "part3_demo.jpg"]
     main(p1, p2, of)
