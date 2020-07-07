@@ -1,4 +1,4 @@
-# **A2 : Warping, Matching, Stitching, Blending**
+# **Warping, Matching, Stitching, Blending**
 
 # **Part1**
 ## **Results**
